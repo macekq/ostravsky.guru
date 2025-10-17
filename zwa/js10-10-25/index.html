@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Javasctipt 3 - události</title>
+  <script type="text/javascript" src="funkce.js"></script>
+  <style type="text/css">
+    body {font-size: 30px;}
+    input {font-size: 30px;}
+    select {font-size: 30px;}
+    /* div {margin: 20px 0px; border: 3px solid blue; padding: 10px 0px;} */
+  </style>
+</head>
+<body onLoad="console.log('Stránka byla načtena');">
+  <h1 onClick="alert('Kliknul jsi na nadpis');">Javascript - události</h1>
+  <div onClick="console.log('1 kliknutí na odstavec');" 
+    onDblClick="console.log('2 kliknutí na odstavec');"
+    onMouseOver="console.log('najetí myškou na odstavec');">Odstavec textu</div>
+  <h2>Formulář</h2>
+  <form method="get" action="#" onSubmit="vypisText1();">
+    <label for="text1">Zadej text:</label>
+    <input type="text" name="text1" id="text1" placeholder="Zadej text..."
+    onFocus="console.log('kurzor je v textovém poli');"
+    onBlur="console.log('kurzor už není v textovém poli');"><br>
+    <label for="text2">Zadej další text:</label>
+    <input type="text" name="text2" id="text2"
+    onFocus="this.style.backgroundColor='#0000ff';"
+    onBlur="this.style.backgroundColor='#fff';"><br>
+    <label for="vyber">Zadej další text:</label>
+    <select name="vyber" id="vyber" 
+        onChange="console.log('změnili jste hodnotu'); console.log(this.value);">
+      <option value="WEA">Webové aplikace</option>
+      <option value="PRG">Programování</option>
+      <option value="X">Něco jiného</option>
+    </select><br>
+    <input type="submit" value="Odeslat formulář">
+  </form>
+  <br><br>
+
+  <div id="kuzel">
+
+    <label for="r">polomer</label>
+    <input type="num" id="r"><br>
+    <label for="v">vyska</label>
+    <input type="num" id="v"><br>
+    <label for="s">polomer plaste</label>
+    <input type="num" id="s">
+
+    <div type="num" id="V"></div><br>
+    <div type="num" id="S"></div>
+
+    <input type="button" onclick="vypln()" value="vypocitat">
+    
+  </div>
+
+
+  <div style="position: absolute;top: 90%;z-index: 999;">
+    <label for="width">width</label>
+    <input type="text" id="width"><br>
+    <label for="height">height</label>
+    <input type="text" id="height"><br>
+    <label for="border">tloustka cary</label>
+    <input type="text" id="border"><br>
+
+    <input type="button" value="obdélník" onclick="obdelnik()">
+    
+    <br><br>
+
+    <label for="start" id="slabel">od</label>
+    <input id="start" type="range" min="0" max="100" step="1"><br>
+    <label for="konec" id="klabel">do</label>
+    <input id="konec" type="range" min="0" max="100" step="1" onchange="intervalOd()">
+  </div>
+
+  <style>
+    #obdelnik{
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border: 0 solid black;
+    }
+  </style>
+  <div id="cover" style="position: absolute; top: 0; left: 0;"></div>
+  <div id="obdelnik" style="position: absolute; background-color: red;"></div>
+
+  <script src="script.js"></script>
+    <!-- /* načtěte z klávesnice poloměr a výšku kuželu */
+    
+    /* nactete rozmery obdelniku a tloustku cary */ -->
+
+
+  <!-- vytvořte tlačítko, po kliknutí se zavolá funkce kuzel s parametry polomer a vyska -->
+
+  <!-- vytvořte tlačítko, po kliknutí se zavolá funkce interval -->
+
+  <a href="index.html">Znovu načíst</a>
+</body>
+</html>
