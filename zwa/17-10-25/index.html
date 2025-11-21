@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Javasctipt 4 - DOM</title>
+  <script type="text/javascript" src="funkce.js"></script>
+  <style type="text/css">
+    * {font-size: 30px;}
+    div {margin: 20px 0px; border: 3px solid blue; padding: 10px 0px;}
+    .odstavec1 {color: green; font-style: italic;}
+    .odstavec2 {color: red; font-style: normal;}
+  </style>
+</head>
+<body>
+  <h1 id="nadpis1">Javascript - události</h1>
+  <div class="odstavec1" id="odstavec1">Odstavec textu</div>
+  <div class="odstavec1" id="odstavec2">Odstavec textu</div>
+  <div>
+    <span id="nazev">Webové aplikace</span> <span id="zkratka">WEA</span><br>
+    <span id="trida">I3B S2</span>
+  </div>
+  <div id="prazdny">
+  </div>
+  <h2>Formulář</h2>
+  <form method="get" action="#">
+    <label for="telefon">Telefon:</label>
+    <input type="text" name="telefon" id="telefon" placeholder="Zadej telefon (bez předvolby)"><br>
+    <input type="submit" value="Odeslat formulář">
+  </form>
+  <br><br>
+
+  <!-- po kliknuti na tlacitko se zavola jedna funkce -->
+  <input type="button" value="Tlačítko" onclick="funkce10();"><br><br>
+
+
+  <div>
+    <input type="num" id="num1">
+    <input type="button" value="+" id="operaceIn" onclick="zmenaZnamenka()">
+    <input type="num" id="num2">
+    <input type="button" value="=" onclick="kalkulacka()">
+    <p id="vysledek"></p>
+  </div>
+  <!-- vytvorte 2 textova pole a mezi nimi select, kde bude na vyber aritmeticka operace -->
+  <!-- aritmeticka operace muze byt scitani, odcitani, nasobeni, deleni -->
+  <!-- za druhym textovym polem bude tlacitko, po jehoz stisku se zavola funkce kalkulacka() -->
+
+
+  <a href="index.html">Znovu načíst</a>
+  <script src="script.js"></script>
+</body>
+</html>

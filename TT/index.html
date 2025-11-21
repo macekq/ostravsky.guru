@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: black;
+    }
+    #mainCont{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vh; height: 100vh;
+
+        /* border: 1px solid white; */
+    }
+    .player{
+        position: absolute;
+        width: 40%; height: 80%;
+        /* background-color: rgba(0,0,255,0.2); */
+        box-shadow: 0 0 5px white;
+    }
+    canvas{
+        width: 100%; height: 100%;
+        /* background-color: rgba(255,0,0,0.2); */
+    }
+    #player2{
+        top: 0; left: 100%;
+        transform: translateX(-100%);
+    }
+    @media(orientation: portrait){
+        #mainCont{
+            width: 100vw; height: 100vw;
+        }
+    }
+
+</style>
+<body>
+    
+    <div id="mainCont">
+        <div id="player1" class="player">
+            <canvas id="canvas1" height="2000" width="1000"></canvas>
+        </div>
+        <div id="player2" class="player">
+            <canvas id="canvas2" height="2000" width="1000"></canvas>
+        </div>
+    </div>
+
+    <script src="shapes.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
