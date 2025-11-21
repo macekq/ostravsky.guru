@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script type="text/javascript" src="funkce.js"></script>
+  <style type="text/css">
+    * {font-size: 2rem;}
+    .odstavec1 {color: green; font-style: italic;}
+    .odstavec2 {color: red; font-style: normal;}
+	textarea {display: block;}
+	.tabulka {width: 500px;	margin: 0px auto;}
+	table {width: 100%; border-collapse: collapse;}
+	table tr th {border: 2px solid lime; padding: 5px;}
+	table tr td {width: 50%; border: 2px solid lime; padding: 5px;}
+	.zebra{background-color: lime;}
+	#prvni {background-color: lightblue; padding: 10px; min-height: 100px;}
+	#druhy {background-color: lightgreen; padding: 10px; min-height: 100px;}
+  </style>
+</head>
+<body>
+	<h1>jQuery</h1>
+
+	<form>
+		<label>Vložte popisek (max. 15 znaků):</label>
+		<textarea id="popisek" maxlength="15"></textarea>
+		Zbývá <span id="zbyva">15</span> znaků
+	</form>
+	<br><br>
+
+	<div class="tabulka">
+	<table id="predmety">
+	<tr>
+		<th>Zkratka</th>
+		<th>Název</th>
+	</tr>
+	<tr>
+		<td>WEA</td>
+		<td>Webové aplikace</td>
+	</tr>
+	<tr>
+		<td>PRG</td>
+		<td>Programování</td>
+	</tr>
+	<tr>
+		<td>ANJ</td>
+		<td>Anglický jazyk</td>
+	</tr>
+	<tr>
+		<td>MAT</td>
+		<td>Matematika</td>
+	</tr>
+	<tr>
+		<td>MAT</td>
+		<td>Matematika</td>
+	</tr>
+	</table>
+	<input type="button" value="Zebra" id="zebra" />
+	<input type="button" value="Smazat" id="smazat" />
+	</div>
+	<br><br>
+	
+	<div id="prvni">
+		<button id="tlacitko1" type="button">Tlačítko 1</button>
+		<button id="tlacitko2" type="button">Tlačítko 2</button>
+		<button id="tlacitko3" type="button">Tlačítko 3</button>  
+	</div>
+	<div id="druhy">
+	</div>
+	<br><br>
+	
+	<input type="button" id="pridatDiv" value="Přidat nový div" />
+	<br><br>
+
+	<div id="rodic">
+		<p>Červená</p>
+		<p>Zelená</p>
+		<p>Modrá</p>
+		<p>Hnědá</p>
+	</div>
+	<div id="pocet"></div>
+	<input type="button" name="zjistiPocet" id="zjistiPocet" value="Zjisti počet" /><br>
+	<input type="text" name="barva" id="barva" /><br>
+	<input type="button" name="pridejBarvu" id="pridejBarvu" value="Přidej barvu" /><br>
+	<br><br>
+
+	<a href="#top">Nahoru</a>
+</body>
+</html>
