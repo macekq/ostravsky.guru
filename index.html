@@ -3,9 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <title>2NOR</title>
 </head>
+<style>
+    #nodeal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        z-index: 100;
+        background-color: black;
+        top: 100%;
+        width: 100vw; height: 100vh;
+
+        font-size: 1.5em;
+    }
+    @media (max-width: 250px){
+        #nodeal{
+            top: 0;
+        }
+    }
+</style>
 <body>
-    <h1>skap mama te nechtela</h1>
+    
+    <div id="nodeal">vaše rozlišení není podporováno</div>
+
+    <main>
+        <nav id="menu">
+            <img src="assets/menu.svg" alt="menu" id="menuBtt">
+            <a href="zwa/index.html" target="_blank"><div id="linkContainer"><div>zwa (macura koncak corp.)</div></a>
+            <a href="v5/index.html"><div>logic gate monitor</div></a>
+        </nav>
+
+        <h1>2.nejlepší<br>ostravský<br>rapper</h1>
+
+        <img id="st-img" src="assets/.png" alt="guru">
+    </main>
+
+    <footer>
+        <a target="_blank" href="https://www.snapchat.com/add/lukasmacura" class="linkBox">        
+            <div>
+                <img src="assets/snapchat.svg" alt="snapchat">
+                <nav>@lukasmacura</nav>
+            </div>
+        </a>
+        <div>   </div>
+        <a target="_blank" href="https://www.instagram.com/l__macura/" class="linkBox">        
+            <div>
+                <img src="assets/instagram.svg" alt="ig">
+                <nav>@l__macura</nav>
+            </div>
+        </a>
+        <div>   </div>
+        <a target="_blank" href="https://github.com/macekq" class="linkBox">        
+            <div>
+                <img src="assets/github.svg" alt="github">
+                <nav>@mackeq</nav>
+            </div>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
