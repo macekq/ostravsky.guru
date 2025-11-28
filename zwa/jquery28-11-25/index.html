@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script type="text/javascript" src="funkce.js"></script>
+  <style type="text/css">
+  </style>
+</head>
+<style>
+
+  .input13{
+    border: 5px solid blue;
+    background-color: lightgrey;
+  }
+  .input23{
+    border: 5px solid green;
+    background-color: yellow;
+  }
+  #visual td{
+    width: 25px; height: 25px;
+  }
+</style>
+<body>
+  <h1>jQuery</h1>
+  <h2>Cena</h2>
+  <form method="get" action="#">
+    <label for="cenaBez">Cena bez DPH:</label>
+    <input type="number" name="cenaBez" id="cenaBez"><br>
+    <label for="sazba">Sazba DPH:</label>
+    <select name="sazba" id="sazba">
+		<option value="0">0 %</option>
+		<option value="10">10 %</option>
+		<option value="21">21 %</option>
+	</select><br>
+    <input type="button" value="Spočítat" id="spocitat"><br>
+    <label for="dph">DPH:</label>
+    <input type="number" name="dph" id="dph"><br>
+    <label for="cenaS">Cena s DPH:</label>
+    <input type="number" name="cenaS" id="cenaS"><br>
+  </form>
+  <br><br>
+
+  <div id="ukol2">
+    <input type="text" class="input2">
+    <input type="text" class="input2">
+    <input type="text" class="input2">
+    <input type="button" id="btt2" value="ukol2">
+    <div id="vysledek"></div>
+
+    <input type="button" id="btt3" value="ukol3">
+  </div>
+
+  <br><br>
+  <h2>Údaje</h2>
+  <div id="jmeno">Lukas</div>
+  <div id="predmet">Webove applikace</div>
+  <div id="trida">I3B</div>
+  <div id="skupina">S2</div>
+  <div id="obor"></div>
+  <div id="rocnik"></div>
+  <input type="button" value="Formátovat" id="formatovat">
+  <input type="button" value="Generovat" id="generovat">
+  
+  <br><br>
+  <h2>Hod kostkou</h2>
+  <input type="button" value="Hodit kostkou" id="kostka">
+  <div id="hodnota"></div>
+  <table id="visual"></table>
+  <br><br>
+
+  <a href="index.html">Znovu načíst</a>
+  <script>
+
+    $(document).ready(() => {
+      $('#spocitat').on('click', () => {
+        $('#dph').val($('#cenaBez').val() / 100 * $('#sazba').val())
+        $('#cenaS').val(parseInt($('#cenaBez').val()) + parseInt($('#dph').val()))
+
+        console.log($('#cenaBez').val())
+      })
+    
+      $('#btt2').on('click', () => {
+        let max = 0;
+        document.querySelectorAll('.input2').forEach(elem => {
+          
+          if(elem.value.length > max){
+            max = elem.value.length
+            $('#vysledek').text(elem.value)
+          }
+
+        })
+      })
+
+      let toogleStyle = true;
+      $('#btt3').on('click', () => {      
+        if(toogleStyle) $('#ukol2 input').removeClass('input23').addClass('input13')
+
+        else $('#ukol2 input').removeClass('input13').addClass('input23')
+
+        toogleStyle = !toogleStyle
+      })
+    
+      $('#formatovat').on('click', () => {
+        $('#jmeno').css({
+          'font-style': 'bold',
+          'color': 'blue',
+          'font-size': '1.5rem',
+          'background-color': 'orange'
+        })
+
+        $('#predmet').css({
+          'font-style': 'italic',
+          'color': 'green',
+          'font-size': '1.1rem'
+        })
+
+        $('#trida').css({
+          'font-style': 'underlined',
+          'color': 'red',
+          'text-align': 'center'
+        })
+
+        $('#skupina').css({
+          'padding': '10px 20px 10px 20px'
+        })
+      })
+      
+      $('#generovat').on('click', () => {
+        if($('#trida').text()[0] == 'I') $('#obor').text('informacni technologie')
+        else $('#obor').text('elektrotechnika')
+
+        $('#rocnik').text(`${$('#trida').text()[1]}. rocnik`)
+      })
+
+      const KOSTKA = [
+        [
+          [0,0,0],[0,1,0],[0,0,0]
+        ],
+        [
+          [1,0,0],[0,0,0],[0,0,1]
+        ],
+        [
+          [1,0,0],[0,1,0],[0,0,1]
+        ],
+        [
+          [1,0,1],[0,0,0],[1,0,1]
+        ],
+        [
+          [1,0,1],[0,1,0],[1,0,1]
+        ],
+        [
+          [1,0,1],[1,0,1],[1,0,1]
+        ]
+      ]
+
+      $('#kostka').on('click', () => {
+        let num = Math.floor(Math.random()*6)
+        $('#hodnota').text(num+1)
+
+        let table = document.getElementById('visual')
+        table.innerHTML = ''
+
+        for(let y = 0; y<3; y++){
+          let tr = document.createElement('tr')
+          
+          for(let x = 0; x<3; x++){
+            let td = document.createElement('td')
+
+            if(KOSTKA[num][y][x] == 1) td.style.backgroundColor = 'black';
+            
+            tr.appendChild(td)
+          }
+          table.appendChild(tr)
+        }
+        
+      })
+    })
+  </script>
+</body>
+</html>
