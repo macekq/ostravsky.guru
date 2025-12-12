@@ -3,12 +3,37 @@ var GAME = {
     uncovered:[],
     mines:[],
     fieldSize: 5,
-    click: true
+    click: true,
+    mineCount: 5,
+    usersMines: []
 }
 
-function mine(){
-    
+
+const size = document.getElementById('fieldSize')
+size.addEventListener('change', () => {
+    document.getElementById('size').innerText = size.value
+    GAME.fieldSize = size.value
+    console.log(GAME.fieldSize)
+})
+document.getElementById('size').innerText = size.value
+    GAME.fieldSize = size.value
+
+
+const mines = document.getElementById('mines')
+mines.addEventListener('change', () => {
+    document.getElementById('mineLabel').innerText = mines.value
+    GAME.mineCount = mines.value
+    console.log(GAME.mineCount)
+})
+document.getElementById('mineLabel').innerText = mines.value
+GAME.mineCount = mines.value
+
+const startGame = () => {
+
+    generateCells(GAME.fieldSize, GAME.fieldSize)
+    generateMines(GAME.mineCount)
 }
+
 
 const generateCells = (width, height) => {
 
@@ -27,15 +52,25 @@ const generateCells = (width, height) => {
         
             let cell = document.createElement('td')
             cell.id = `cell${j}-${i}`
+            // console.log(cell.id)
 
-            cell.addEventListener('click', () => {
+            cell.addEventListener('contextmenu', e => {
+                e.preventDefault()
+            })
+            cell.addEventListener('mouseup', e => {
+
+                if(e.button == 0){
+                    if(GAME.click){
+                        while(GAME.matrix[i][j] != 0) generateMines(5) 
+                        
+                        GAME.click = false
+                    }
+                    uncoverArea(j, i)
                 
-                if(GAME.click){
-                    while(GAME.matrix[i][j] != 0) generateMines(5) 
-                    
-                    GAME.click = false
+                }else if(e.button == 2){
+                    cell.style.backgroundColor = 'red'
                 }
-                uncoverArea(j, i)
+                
             })
 
             row.appendChild(cell)
@@ -46,7 +81,7 @@ const generateCells = (width, height) => {
         table.appendChild(row)
     }
 }
-generateCells(GAME.fieldSize, GAME.fieldSize)
+// generateCells(GAME.fieldSize, GAME.fieldSize)
 
 
 const generateMines = (amount) => {
@@ -70,7 +105,7 @@ const generateMines = (amount) => {
         for(let b = -1; b<2; b++){
             for(let a = -1; a<2; a++){
                 
-                console.log(y+b, x+a)
+                // console.log(y+b, x+a)
                 
                 if(y+b<0 || x+a<0);
                 else if(y+b >= GAME.fieldSize || x+a >= GAME.fieldSize);
@@ -82,7 +117,7 @@ const generateMines = (amount) => {
         }
     }
 }
-generateMines(5)
+// generateMines(GAME.mineCount)
 console.log(GAME)
 function exists(x, y){
     if(x < 0 || y < 0) return false;
@@ -148,3 +183,5 @@ function uncoverArea(cellX, cellY){
     }
     
 }
+
+startGame()

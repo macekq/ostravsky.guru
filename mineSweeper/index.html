@@ -16,20 +16,40 @@
         background-color: rgb(80,80,80);
         box-shadow: inset 3px 3px 0 rgb(180,180,180), inset -3px -3px 0 rgb(180,180,180), 0 0 2px white;
         border: 1px solid black;
-        width: 50px; height: 50px;
+        width: 25px; height: 25px;
         text-align: center;
         color: white;
         font-size: 1.5em;
     }
-    table{
+    #tab{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+
         background-color: black;
         border-radius: 5px;
+        width: 100vh; height: 100vh;
+    }
+    @media(orientation: portrait){
+        #tab{
+            width: 100vw; height: 100vw;
+        }
     }
 </style>
 <body>
+    <div id="interface">
+        <input id="fieldSize" value="5" type="range" min="5" max="25" step="1">
+        <label id="size" for="fieldSize">5</label>
+        <br>
+        <input id="mines" value="5" type="range" min="5" max="25" step="1">
+        <label id="mineLabel" for="mines">5</label>
+        <br>
+        <input type="submit" onclick="startGame()">
+    </div>
     <table id="tab">
 
     </table>
     <script src="script.js"></script>
+
 </body>
 </html>
