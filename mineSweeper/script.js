@@ -59,7 +59,7 @@ const generateMines = (amount) => {
             layer.push(0)
         }
         GAME.matrix.push(layer)
-    }    
+    }
 
     for(let i = 0; i<amount; i++){
         let x = Math.floor(Math.random()*GAME.fieldSize)
