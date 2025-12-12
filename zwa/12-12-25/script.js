@@ -1,5 +1,6 @@
 const datum = document.getElementById('datum')
 const table = document.getElementById('table')
+
 const dnyNaMesic = [31,28,31,30,31,30,31,31,30,31,30,31]
 
 const myDate = {
@@ -31,22 +32,40 @@ function generovat(){
     const den1 = datum.value.slice(6,1)
     console.log(datum.value, den1)
 }
-function RozdilMeziDatumynaDny(stDatum, ndDatum){
+function RozdilMeziDatumyNaDny(stDatum, ndDatum){
 
     //pocet dnu mezi mesici
-    const mesic1 = parseInt(stDatum.substring(4,2)), mesic2 = parseInt(ndDatum.substring(4,2))
-    let counter = 0, index = mesic1;
+    //const mesic1 = parseInt(stDatum.substring(4,2)), mesic2 = parseInt(ndDatum.substring(4,2))
+    let mesic1 = stDatum[5] == '1' ? parseInt(stDatum[5]*10) + parseInt(stDatum[6]) : parseInt(stDatum[6])
+    let mesic2 = ndDatum[5] == '1' ? parseInt(ndDatum[5]*10) + parseInt(ndDatum[6]) : parseInt(ndDatum[6])
+    
+    //console.log(stDatum, ndDatum, stDatum[6])
+
+    let counter = 0, index = mesic1-1;
+    
+    console.log("mesice", mesic1, mesic2)
+
     while(index!=mesic2-1){
         index %= 12
-
+        
         counter += dnyNaMesic[index]
-
+        
+        console.log(index)
         index++
     }
-    console.log(counter)
+    console.log("counter", counter)
     
-    const den1 = parseInt(stDatum.substring(9,2))
-    console.log(stDatum, den1)
+    let start = stDatum[8] != '0' ? parseInt(ndDatum[8])*10 + parseInt(stDatum[9]) : parseInt(stDatum[9]);
+    console.log("start", start)
+
+    let konec = ndDatum[8] != '0' ? parseInt(ndDatum[8])*10 + parseInt(ndDatum[9]) : parseInt(ndDatum[9]);
+    console.log("konec", konec)
+
+    if(mesic1 == mesic2) return counter + konec-start
     
+    return counter - start + konec
 }
-RozdilMeziDatumynaDny('2021-02-06', '2013-07-12')
+document.getElementById('dateBtt').addEventListener('click', () => {
+    console.log(RozdilMeziDatumyNaDny(document.getElementById('date1').value, document.getElementById('date2').value))
+})
+console.log(RozdilMeziDatumyNaDny('2021-02-11', '2021-03-11'))
