@@ -67,10 +67,14 @@ region.addEventListener('change', () => {
 		nullOpt.value = -1; nullOpt.innerText = '-------'
 		select.appendChild(nullOpt)
 
+		Object.entries(mena).forEach(([klic, nazev]) => {
+			console.log(klic, nazev)
+		});
+
 		let index = 0;
 		statyVRegionu.forEach((hodnota) => {
 			console.log(hodnota["name"]['common'], data[index]["currencies"])
-			mena.push(data[index]["currencies"])
+			mena.push([data[index]["currencies"]])
 
 			let opt = document.createElement('option')
 			
