@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ukol 27.2.2026</title>
 </head>
+<style>
+  #table{
+    width: 60vw; height: auto;
+    position: absolute;
+    left: 100%; top: 0;
+    transform: translateX(-101%);
+  }
+  #table td{
+    height: 2vh;
+    border: 1px solid black;
+  }
+</style>
 <body>
     <h1>JSON</h1>
   <input type="button" value="Načíst regiony" id="nacistRegiony">
@@ -12,6 +24,15 @@
 	<select name="region" id="region"></select>
     <br>
   </div>
+  <div id="coutryInfo"></div>
+
+  <table id="table">
+    <tr>
+      <td><h3>podregiony</h3></td>
+      <td style="width: 30vw;"><h3>mena</h3></td>
+      <td><h3>UN</h3></td>
+    </tr>
+  </table>
 
   <script src="script.js"></script>
   <script src="funkce.js"></script>
